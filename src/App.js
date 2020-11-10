@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import { CaughtPokemon } from './feature/caughtPokemon/CaughtPokemon.js';
+import { Search } from './feature/search/Search.js';
+import { AllPokemon } from './feature/allPokemon/AllPokemon.js';
 
-function App() {
+import { catchPokemon, releasePokemon } from './feature/caughtPokemon/caughtPokemonSlice.js';
+import { setSearchTerm, clearSearchTerm } from './feature/search/searchSlice.js';
+
+export function App({state, dispatch}) {
+
+  const onAddPokemonHandler = (pokemon) => {
+    dispatch(catchPokemon(pokemon));
+  };
+
+  const onRemovePokemonHandler = (pokemon) => {
+    dispatch(releasePokemon(pokemon));
+  };
+
+  const onSearchChangeHandler = (e) => {
+    dispatch(setSearchTerm(e.target.value));
+  };
+
+  const onSearchTermClearHandler = () => {
+    dispatch(clearSearchTerm());
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <main>
+      <section>
+        <Search
+          searchTerm={state.searchTerm}
+          onChangeHandler={onSearchChangeHandler}
+          onClearSearchTermHandler={onSearchTermClearHandler}
+        />
+      </section>
+      <section>
+        <AllPokemon 
+          allPokemon={getFilteredAllPokemon(state)} 
+          onAddPokemonHandler={onAddPokemonHandler} 
+        />
+      </section>
+      <hr />
+      <section>
+        <CaughtPokemon
+          caughtPokemon={state.caughtPokemon}
+          onRemovePokemonHandler={onRemovePokemonHandler}
+        />
+      </section>
+    </main>
+  )
 }
 
-export default App;
+/* Utility Helpers */
+
+function getFilteredAllPokemon({allPokemon, searchTerm, caughtPokemon}) {
+  return allPokemon.filter((pokemon) => {
+    const doesMatchSearch = pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+    const isCaught = caughtPokemon.some(cp => pokemon.name === cp.name)
+    return doesMatchSearch && !isCaught;
+  })
+}
