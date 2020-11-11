@@ -33,6 +33,8 @@ export function App({state, dispatch}) {
         />
       </section>
       <section>
+        <h3>Wild Pokemon</h3>
+        <p>Click on a pokemon to catch it!</p>
         <AllPokemon 
           allPokemon={getFilteredAllPokemon(state)} 
           onAddPokemonHandler={onAddPokemonHandler} 
@@ -40,6 +42,8 @@ export function App({state, dispatch}) {
       </section>
       <hr />
       <section>
+        <h3>Caught Pokemon</h3> 
+        <p>Click on a pokemon to release it back to the wild!</p>
         <CaughtPokemon
           caughtPokemon={state.caughtPokemon}
           onRemovePokemonHandler={onRemovePokemonHandler}
