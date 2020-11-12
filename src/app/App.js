@@ -1,9 +1,9 @@
-import { CaughtPokemon } from './feature/caughtPokemon/CaughtPokemon.js';
-import { Search } from './feature/search/Search.js';
-import { AllPokemon } from './feature/allPokemon/AllPokemon.js';
+import { CaughtPokemon } from '../features/caughtPokemon/CaughtPokemon.js';
+import { Search } from '../features/search/Search.js';
+import { AllPokemon } from '../features/allPokemon/AllPokemon.js';
 
-import { catchPokemon, releasePokemon } from './feature/caughtPokemon/caughtPokemonSlice.js';
-import { setSearchTerm, clearSearchTerm } from './feature/search/searchSlice.js';
+import { catchPokemon, releasePokemon } from '../features/caughtPokemon/caughtPokemonSlice.js';
+import { setSearchTerm, clearSearchTerm } from '../features/search/searchSlice.js';
 
 export function App({state, dispatch}) {
 
