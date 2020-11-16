@@ -2,34 +2,13 @@ import { CaughtPokemon } from '../features/caughtPokemon/CaughtPokemon.js';
 import { Search } from '../features/search/Search.js';
 import { AllPokemon } from '../features/allPokemon/AllPokemon.js';
 
-import { catchPokemon, releasePokemon } from '../features/caughtPokemon/caughtPokemonSlice.js';
-import { setSearchTerm, clearSearchTerm } from '../features/search/searchSlice.js';
-
 export function App({state, dispatch}) {
-
-  const onAddPokemonHandler = (pokemon) => {
-    dispatch(catchPokemon(pokemon));
-  };
-
-  const onRemovePokemonHandler = (pokemon) => {
-    dispatch(releasePokemon(pokemon));
-  };
-
-  const onSearchChangeHandler = (e) => {
-    dispatch(setSearchTerm(e.target.value));
-  };
-
-  const onSearchTermClearHandler = () => {
-    dispatch(clearSearchTerm());
-  };
-
   return (
     <main>
       <section>
         <Search
           searchTerm={state.searchTerm}
-          onChangeHandler={onSearchChangeHandler}
-          onClearSearchTermHandler={onSearchTermClearHandler}
+          dispatch={dispatch}
         />
       </section>
       <section>
@@ -37,7 +16,7 @@ export function App({state, dispatch}) {
         <p>Click on a pokemon to catch it!</p>
         <AllPokemon 
           allPokemon={getFilteredAllPokemon(state)} 
-          onAddPokemonHandler={onAddPokemonHandler} 
+          dispatch={dispatch}
         />
       </section>
       <hr />
@@ -46,7 +25,7 @@ export function App({state, dispatch}) {
         <p>Click on a pokemon to release it back to the wild!</p>
         <CaughtPokemon
           caughtPokemon={state.caughtPokemon}
-          onRemovePokemonHandler={onRemovePokemonHandler}
+          dispatch={dispatch}
         />
       </section>
     </main>
