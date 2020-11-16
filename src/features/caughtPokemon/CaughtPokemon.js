@@ -1,4 +1,4 @@
-import { releasePokemon } from '../features/caughtPokemon/caughtPokemonSlice.js';
+import { releasePokemon } from '../../features/caughtPokemon/caughtPokemonSlice.js';
 
 export const CaughtPokemon = ({ caughtPokemon, dispatch }) =>{
   

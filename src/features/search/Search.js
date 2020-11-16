@@ -1,4 +1,4 @@
-import { setSearchTerm, clearSearchTerm } from '../features/search/searchSlice.js';
+import { setSearchTerm, clearSearchTerm } from '../../features/search/searchSlice.js';
 
 export const Search = ({ searchTerm, dispatch }) => {
   
