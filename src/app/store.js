@@ -1,12 +1,12 @@
 import { createStore, combineReducers } from 'redux';
-import { caughtPokemonReducer } from '../features/caughtPokemon/caughtPokemonSlice.js';
+import { favoriteRecipesReducer } from '../features/favoriteRecipes/favoriteRecipesSlice.js';
 import { searchTermReducer } from '../features/search/searchSlice.js';
-import { allPokemonReducer } from '../features/allPokemon/allPokemonSlice.js';
+import { allRecipesReducer } from '../features/allRecipes/allRecipesSlice.js';
 
 const rootReducer = combineReducers({
-  caughtPokemon: caughtPokemonReducer,
+  favoriteRecipes: favoriteRecipesReducer,
   searchTerm: searchTermReducer,
-  allPokemon: allPokemonReducer
+  allRecipes: allRecipesReducer
 });
 
 export const store = createStore(rootReducer);

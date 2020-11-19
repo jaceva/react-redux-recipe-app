@@ -1,8 +1,9 @@
-import { CaughtPokemon } from '../features/caughtPokemon/CaughtPokemon.js';
+import { FavoriteRecipes } from '../features/favoriteRecipes/FavoriteRecipes.js';
 import { Search } from '../features/search/Search.js';
-import { AllPokemon } from '../features/allPokemon/AllPokemon.js';
+import { AllRecipes } from '../features/allRecipes/AllRecipes.js';
 
-export function App({state, dispatch}) {
+export function App(props) {
+  const {state, dispatch} = props;
   return (
     <main>
       <section>
@@ -12,19 +13,17 @@ export function App({state, dispatch}) {
         />
       </section>
       <section>
-        <h3>Wild Pokemon</h3>
-        <p>Click on a pokemon to catch it!</p>
-        <AllPokemon 
-          allPokemon={getFilteredAllPokemon(state)} 
+        <h3>All Recipes</h3>
+        <AllRecipes
+          allRecipes={getFilteredAllRecipes(state)} 
           dispatch={dispatch}
         />
       </section>
       <hr />
       <section>
-        <h3>Caught Pokemon</h3> 
-        <p>Click on a pokemon to release it back to the wild!</p>
-        <CaughtPokemon
-          caughtPokemon={state.caughtPokemon}
+        <h3>Favorite Recipes</h3> 
+        <FavoriteRecipes
+          favoriteRecipes={state.favoriteRecipes}
           dispatch={dispatch}
         />
       </section>
@@ -34,10 +33,10 @@ export function App({state, dispatch}) {
 
 /* Utility Helpers */
 
-function getFilteredAllPokemon({allPokemon, searchTerm, caughtPokemon}) {
-  return allPokemon.filter((pokemon) => {
-    const doesMatchSearch = pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
-    const isCaught = caughtPokemon.some(cp => pokemon.name === cp.name)
-    return doesMatchSearch && !isCaught;
+function getFilteredAllRecipes({allRecipes, searchTerm, favoriteRecipes}) {
+  return allRecipes.filter((recipe) => {
+    const doesMatchSearch = recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+    const isFavorited = favoriteRecipes.some(favoriteRecipe => recipe.name === favoriteRecipe.name)
+    return doesMatchSearch && !isFavorited;
   })
 }
