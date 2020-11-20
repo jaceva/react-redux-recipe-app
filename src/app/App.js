@@ -15,7 +15,7 @@ export function App(props) {
       <section>
         <h3>All Recipes</h3>
         <AllRecipes
-          allRecipes={getFilteredAllRecipes(state)} 
+          allRecipes={getFilteredRecipes(state.allRecipes, state.searchTerm)} 
           dispatch={dispatch}
         />
       </section>
@@ -23,7 +23,7 @@ export function App(props) {
       <section>
         <h3>Favorite Recipes</h3> 
         <FavoriteRecipes
-          favoriteRecipes={state.favoriteRecipes}
+          favoriteRecipes={getFilteredRecipes(state.favoriteRecipes, state.searchTerm)}
           dispatch={dispatch}
         />
       </section>
@@ -33,10 +33,9 @@ export function App(props) {
 
 /* Utility Helpers */
 
-function getFilteredAllRecipes({allRecipes, searchTerm, favoriteRecipes}) {
-  return allRecipes.filter((recipe) => {
+function getFilteredRecipes(recipes, searchTerm) {
+  return recipes.filter((recipe) => {
     const doesMatchSearch = recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
-    const isFavorited = favoriteRecipes.some(favoriteRecipe => recipe.name === favoriteRecipe.name)
-    return doesMatchSearch && !isFavorited;
+    return doesMatchSearch;
   })
 }

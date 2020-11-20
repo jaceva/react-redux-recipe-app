@@ -1,9 +1,9 @@
-import { removeRecipe } from '../../features/favoriteRecipes/favoriteRecipesSlice.js';
+import { removeRecipe } from './favoriteRecipesSlice.js';
 
 export const FavoriteRecipes = ({ favoriteRecipes, dispatch }) =>{
   
   const onRemoveRecipeHandler = (recipe) => {
-    dispatch(removeRecipe(recipe.id));
+    dispatch(removeRecipe(recipe));
   };
   
   return favoriteRecipes.map((recipe, i) => (

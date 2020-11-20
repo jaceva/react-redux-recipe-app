@@ -4,7 +4,7 @@ export const favoriteRecipesReducer = (state = initialState, action) => {
     case 'favoriteRecipes/addRecipe':
       return [...state, action.payload]
     case 'favoriteRecipes/removeRecipe':
-      return state.filter(recipe => recipe.id !== action.payload)
+      return state.filter(recipe => recipe.id !== action.payload.id)
     default:
       return state;
   }
@@ -17,9 +17,9 @@ export function addRecipe(recipe) {
   }
 }
 
-export function removeRecipe(id) {
+export function removeRecipe(recipe) {
   return {
     type: 'favoriteRecipes/removeRecipe',
-    payload: id
+    payload: recipe
   }
 }

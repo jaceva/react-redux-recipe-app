@@ -1,4 +1,4 @@
-import { addRecipe } from '../../features/favoriteRecipes/favoriteRecipesSlice.js';
+import { addRecipe } from '../favoriteRecipes/favoriteRecipesSlice.js';
 
 export const AllRecipes = ({ allRecipes, dispatch }) => {
   
