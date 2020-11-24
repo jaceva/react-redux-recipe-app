@@ -1,6 +1,6 @@
 import { setSearchTerm, clearSearchTerm } from './searchSlice.js';
 
-export const Search = ({ searchTerm, dispatch }) => {
+export const Search = () => {
   
   const onSearchChangeHandler = (e) => {
     dispatch(setSearchTerm(e.target.value));

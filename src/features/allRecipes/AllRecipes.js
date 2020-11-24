@@ -1,6 +1,6 @@
 import { addRecipe } from '../favoriteRecipes/favoriteRecipesSlice.js';
 
-export const AllRecipes = ({ allRecipes, dispatch }) => {
+export const AllRecipes = () => {
   
   const onAddRecipeHandler = (recipe) => {
     dispatch(addRecipe(recipe));

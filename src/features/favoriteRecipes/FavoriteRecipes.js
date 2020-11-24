@@ -1,6 +1,6 @@
 import { removeRecipe } from './favoriteRecipesSlice.js';
 
-export const FavoriteRecipes = ({ favoriteRecipes, dispatch }) =>{
+export const FavoriteRecipes = () =>{
   
   const onRemoveRecipeHandler = (recipe) => {
     dispatch(removeRecipe(recipe));

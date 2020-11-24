@@ -6,9 +6,7 @@ import { AllRecipes } from '../features/allRecipes/AllRecipes.js';
 
 import { loadData } from '../features/allRecipes/allRecipesSlice'
 
-export function App(props) {
-  const {state, dispatch} = props;
-
+export function App() {
   useEffect(() => {
     dispatch(loadData());
   }, [])
@@ -16,25 +14,16 @@ export function App(props) {
   return (
     <main>
       <section>
-        <Search
-          searchTerm={state.searchTerm}
-          dispatch={dispatch}
-        />
+        <Search/>
       </section>
       <section>
         <h3>All Recipes</h3>
-        <AllRecipes
-          allRecipes={getFilteredRecipes(state.allRecipes, state.searchTerm)} 
-          dispatch={dispatch}
-        />
+        <AllRecipes/>
       </section>
       <hr />
       <section>
         <h3>Favorite Recipes</h3> 
-        <FavoriteRecipes
-          favoriteRecipes={getFilteredRecipes(state.favoriteRecipes, state.searchTerm)}
-          dispatch={dispatch}
-        />
+        <FavoriteRecipes/>
       </section>
     </main>
   )
