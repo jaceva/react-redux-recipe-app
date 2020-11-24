@@ -1,6 +1,10 @@
+import { useSelector } from 'react-redux';
+
+import { selectFilteredAllRecipes } from 'allRecipesSlice';
 import { addRecipe } from '../favoriteRecipes/favoriteRecipesSlice.js';
 
 export const AllRecipes = () => {
+  const allRecipes = useSelector(selectFilteredAllRecipes);
   
   const onAddRecipeHandler = (recipe) => {
     dispatch(addRecipe(recipe));
