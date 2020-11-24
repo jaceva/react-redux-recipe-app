@@ -22,6 +22,8 @@ export const allRecipesReducer = (state = initialState, action) => {
   }
 }
 
+export const selectAllRecipes = (state) => state.allRecipes;
+
 export const selectFilteredAllRecipes = (state) => {
   const allRecipes = selectAllRecipes(state);
   const searchTerm = selectSearchTerm(state);

@@ -1,9 +1,14 @@
-import { removeRecipe } from './favoriteRecipesSlice.js';
+import { useSelector } from 'react-redux';
+
+import { 
+  selectFilteredFavoriteRecipes, 
+  removeRecipe } from './favoriteRecipesSlice.js';
 
 export const FavoriteRecipes = () =>{
-  
+  const favoriteRecipes = useSelector(selectFilteredFavoriteRecipes);
+
   const onRemoveRecipeHandler = (recipe) => {
-    dispatch(removeRecipe(recipe));
+    ;//dispatch(removeRecipe(recipe));
   };
   
   return favoriteRecipes.map((recipe, i) => (

@@ -26,6 +26,8 @@ export function removeRecipe(recipe) {
   }
 }
 
+const selectFavoriteRecipes = (state) => state.favoriteRecipes;
+
 export const selectFilteredFavoriteRecipes = (state) => {
   const favoriteRecipes = selectFavoriteRecipes(state);
   const searchTerm = selectSearchTerm(state);

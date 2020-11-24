@@ -8,7 +8,7 @@ import { loadData } from '../features/allRecipes/allRecipesSlice'
 
 export function App() {
   useEffect(() => {
-    dispatch(loadData());
+    ;//dispatch(loadData());
   }, [])
 
   return (
